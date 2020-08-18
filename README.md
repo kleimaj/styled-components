@@ -260,3 +260,84 @@ const PrimaryButton = styled(Button)`
 `
 
 ```
+
+### Additional Button Variations
+
+Modifiers in styled-components allow us to add additional modifications to our styled-components. For the example of the button, we will add two modifiers for bigger and smaller Primary Buttons.
+
+First install the `styled-components-modifiers` package  
+
+```
+    npm i styled-components-modifiers
+```
+
+After this, we will go ahead and define our `BUTTON_MODIFIERS`, which is a configuration object of functions that return CSS styled strings.
+
+```javascript
+// Buttons.js
+import styled from 'styled-components';
+import { applyStyleModifiers } from 'styled-components-modifiers';
+
+const BUTTON_MODIFIERS = {
+    small: () => `
+      font-size: 0.8rem;
+      padding: 8px;
+    `,
+    large: () => `
+      font-size: 1.5rem;
+      padding: 16px 25px;
+    `,
+    warning: () =>  `
+      background-color: #F2DC12;
+      color: black;
+
+      &:hover, &:focus, &:active {
+          background-color: #F2DC12;
+          color: black;
+          outline: none;
+      }
+    `
+}
+
+...
+
+```
+
+We will then apply the modifiers <strong>in the last line of our defined PrimaryButton</strong>, such that it is not overridden by any of the defined styles.
+
+```javascript
+// Buttons.js
+
+...
+
+const PrimaryButton = styled(Button)`
+    // CSS / SCSS goes in here
+    background-color: ${primaryColor};
+    border: none;
+    color: ${textOnPrimary};
+
+    &:hover {
+        background-color: ${hoverColor};
+        color: ${textOnPrimaryInverted};
+    }
+
+    ...
+
+    ${applyStyleModifiers(BUTTON_MODIFIERS)}
+`
+
+export default PrimaryButton;
+
+```
+
+In `App.js`, we are then able to utilize modifiers like so:
+
+```javascript
+
+    <PrimaryButton modifiers="large">A Large Button</PrimaryButton>
+
+    <PrimaryButton modifiers="small">A Small Button</PrimaryButton>
+
+    <PrimaryButton modifiers={["large", "warning"]}>A Large Warning Button</PrimaryButton>
+
+```

@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       <h1>My Styled Components</h1>
-     <PrimaryButton>Click Me</PrimaryButton>
+     <PrimaryButton modifiers={["large","warning"]}>Click Me</PrimaryButton>
     </div>
   );
 }

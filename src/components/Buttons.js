@@ -1,4 +1,27 @@
 import styled from 'styled-components';
+import { applyStyleModifiers } from 'styled-components-modifiers';
+
+const BUTTON_MODIFIERS = {
+    small: () => `
+      font-size: 0.8rem;
+      padding: 8px;
+    `,
+    large: () => `
+      font-size: 1.5rem;
+      padding: 16px 25px;
+    `,
+    warning: () =>  `
+    background-color: #F2DC12;
+    color: black;
+
+    &:hover, &:focus, &:active {
+        background-color: #F2DC12;
+        color: black;
+        outline: none;
+    }
+  `
+}
+
 
 const primaryColor = '#FF5757';
 const hoverColor = '#FF4646';
@@ -49,6 +72,8 @@ const PrimaryButton = styled(Button)`
         color: ${disabledText};
         cursor: not-allowed;
     }
+
+    ${applyStyleModifiers(BUTTON_MODIFIERS)}
 `
 
 export default PrimaryButton;
