@@ -7,6 +7,9 @@ const activeColor = '#FF0000';
 const textOnPrimary = '#000000';
 const textOnPrimaryInverted = '#ffffff';
 
+const disabled = '#B1B1B1';
+const disabledText = '#3E3D3D';
+
 const Button = styled.button`
     padding: 12px 24px;
     font-size: 1rem;
@@ -39,6 +42,12 @@ const PrimaryButton = styled(Button)`
     &:active {
         background-color: ${activeColor};
         color: ${textOnPrimaryInverted};
+    }
+
+    &:disabled {
+        background-color: ${disabled};
+        color: ${disabledText};
+        cursor: not-allowed;
     }
 `
 
