@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Illustrations, CloseIcon } from '../assets';
 import { PrimaryButton } from './Buttons';
-import { useSpring, animated, config } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 
 const ModalWrapper = styled.div`
     width: 800px;
@@ -46,8 +46,7 @@ const CloseModalButton = styled.button`
 export const SignUpModal = (props) => {
     const animation = useSpring({
         opacity: props.showModal ? 1 : 0,
-        transform: props.showModal ? `translateY(0)` : `translateY(-200%)`,
-        config: config.wobbly
+        transform: props.showModal ? `translateY(0)` : `translateY(-200%)`
     });
     return (
         <animated.div style={animation}>

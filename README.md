@@ -599,3 +599,45 @@ export default App;
 * First we will `npm install react-spring`
 
 * Next, `import { useSpring, animated } from 'react-spring'` in our `Modals.js`
+
+* Define the animation style in our `SignUpModal` component
+
+* wrap the entire `SignUpModal` in an `<animated.div style={animated}>`
+
+* Finally remember to add the `setShowModal` callback to the `CloseModalButton`
+
+```javascript
+// Modals.js
+
+import { useSpring, animated } from 'react-spring';
+
+...
+
+export const SignUpModal = (props) => {
+    const animation = useSpring({
+        opacity: props.showModal ? 1 : 0,
+        transform: props.showModal ? `translateY(0)` : `translateY(-200%)`
+    });
+    return (
+        <animated.div style={animation}>
+            <ModalWrapper>
+                <img 
+                    src={Illustrations.SignUp} 
+                    alt="Sign up for an account" 
+                    aria-hidden="true" 
+                />
+                <SignUpHeader>Sign Up!</SignUpHeader>
+                <SignUpText>Sign up today to get access to cool things!</SignUpText>
+                <PrimaryButton>Submit</PrimaryButton>
+                <CloseModalButton
+                    aria-label="Close modal"
+                    onClick={() => props.setShowModal(false)}
+                >
+                    <CloseIcon/>
+                </CloseModalButton>
+            </ModalWrapper>
+        </animated.div>
+    )
+}
+
+```
