@@ -44,7 +44,7 @@ const Button = styled.button`
 
 `
 
-const PrimaryButton = styled(Button)`
+export const PrimaryButton = styled(Button)`
     // CSS / SCSS goes in here
     background-color: ${primaryColor};
     border: none;
@@ -76,4 +76,4 @@ const PrimaryButton = styled(Button)`
     ${applyStyleModifiers(BUTTON_MODIFIERS)}
 `
 
-export default PrimaryButton;
+// export default PrimaryButton;

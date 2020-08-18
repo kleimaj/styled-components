@@ -342,9 +342,80 @@ In `App.js`, we are then able to utilize modifiers like so:
 
 ```
 
-### Building a Modal
+### Building a Modal with Composite Styled Components
 
 
 ![Modal](./markdown/images/modal.png)
 
 In the second part of this lesson we will be building a modal in order to call our users to action. This is a great way of leading them to a login / signup page. For this example I used an open source illustration from [undraw.io](https://undraw.co/) as well as an icon from [Font Awesome](https://fontawesome.com/)
+
+
+#### 1. Create your Modals.js in /components
+
+```
+touch components/Modals.js
+```
+
+#### 2. Create your ModalWrapper component to wrap all sub-components.
+
+First, create your parent component that will house all other components of the modal.
+
+```javascript
+// Modals.js
+
+import React from 'react';
+import styled from 'styled';
+
+const ModalWrapper = styled.div`
+    width: 800px;
+    height: 500px;
+    box-shadow: 0 5px 16px rgba(0,0,0, 0.2);
+    background-color: #ffffff;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 2px;
+`
+
+```
+
+#### 3. Create Your Header and Text Component for the Modal. 
+
+We will then create the `SignUpHeader` and `SignUpText`.
+
+```javascript
+// Modals.js
+
+const SignUpHeader = styled.h3`
+    font-size: 2rem;
+`
+
+const SignUpText = styled.p`
+    font-size: 1rem;
+    max-width: 70%;
+    text-align: center;
+`
+
+```
+
+#### 4. Create a stateless functional component which will act as our modal.
+
+```javascript
+// Modal.js
+
+export const SignUpModal = () => {
+    return (
+        <ModalWrapper>
+            <SignUpHeader>Sign Up!</SignUpHeader>
+            <SignUpText>Sign up today to get access to cool things!</SignUpText>
+            <PrimaryButton>Submit</PrimaryButton>
+        </ModalWrapper>
+    )
+}
+
+```
+
+#### 5. Make a directory called `assets`, to hold our illustrations and icons. 
