@@ -346,3 +346,5 @@ In `App.js`, we are then able to utilize modifiers like so:
 
 
 ![Modal](./markdown/images/modal.png)
+
+In the second part of this lesson we will be building a modal in order to call our users to action. This is a great way of leading them to a login / signup page. For this example I used an open source illustration from [undraw.io](https://undraw.co/) as well as an icon from [Font Awesome](https://fontawesome.com/)
