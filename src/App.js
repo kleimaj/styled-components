@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PrimaryButton } from './components/Buttons';
 import { SignUpModal } from './components/Modals';
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div style={{
       width: '100vw',
@@ -13,8 +14,10 @@ function App() {
       flexDirection: 'column'
     }}>
       <h1>My Styled Components</h1>
-     <PrimaryButton>Click Me</PrimaryButton>
-     <SignUpModal />
+     <PrimaryButton
+        onClick={() => setShowModal(!showModal)} 
+     >Click Me</PrimaryButton>
+     <SignUpModal showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 }

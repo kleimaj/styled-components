@@ -545,3 +545,57 @@ function App() {
 export default App;
 
 ```
+
+### Animation and functionality with react spring
+
+#### 1. Add state to our App component
+
+In `App.js`, we want to import `useState` to create a toggle state for our modal.
+
+* `import React, { useState } from 'react`;
+
+* initialize `showModal` and `setShowModal` with a default value of `false`
+
+* add an `onClick` listener to our `PrimaryButton`
+
+* pass the useState properties to the `SignUpModal` 
+
+```javascript
+// App.js
+
+import React, { useState } from 'react';
+import { PrimaryButton } from './components/Buttons';
+import { SignUpModal } from './components/Modals';
+
+function App() {
+    // useState hook
+  const [showModal, setShowModal] = useState(false);
+  return (
+    <div style={{
+      width: '100vw',
+      height: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      flexDirection: 'column'
+    }}>
+      <h1>My Styled Components</h1>
+
+     <PrimaryButton
+        onClick={() => setShowModal(!showModal)} 
+     >Click Me</PrimaryButton>
+
+     <SignUpModal showModal={showModal} setShowModal={setShowModal} />
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+#### 2. Add animation to our modal
+
+* First we will `npm install react-spring`
+
+* Next, `import { useSpring, animated } from 'react-spring'` in our `Modals.js`
