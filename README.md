@@ -112,3 +112,151 @@ const Button = styled.button`
 `
 
 ```
+
+## Code-Along
+
+### Installation 
+
+First we're going to want to install the `styled-components` dependency.
+
+```
+npm i styled-components
+```
+
+### The Basic Setup
+
+The next thing we will do is make a directory for our components
+
+```
+mkdir src/components && cd src/components
+```
+
+From here let's create our first styled-component, a Button (creative, I know)
+
+```
+touch Buttons.js
+```
+
+In our `Buttons.js`, we will import styled-components and define our first button, a Primary Button.
+
+```javascript
+// Buttons.js
+import styled from 'styled-components';
+
+const PrimaryButton = styled.button`
+    // CSS / SCSS goes in here
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+`
+
+export default PrimaryButton;
+
+```
+
+In our `App.js`, we will import the PrimaryButton and render it in our App.
+
+```javascript
+// App.js
+import React from 'react';
+import PrimaryButton from './components/Buttons';
+
+function App() {
+  return (
+    <div>
+      <h1>My Styled Components</h1>
+     <PrimaryButton>Click Me</PrimaryButton>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+You should see something like this rendered in your browser:
+
+![Checkpoint 1](./markdown/images/checkpoint1.png)
+
+### Inheritance with Styled-Components
+
+We can refactor our `Buttons.js` to dry our code when creating more button variations. We will create a base `Button` component that all specific buttons will inherit the styled properties of.
+
+```javascript
+// Buttons.js
+...
+
+// The Base Button Component
+const Button = styled.button`
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 2px;
+    min-width: 100px;
+    cursor: pointer;
+    font-family: "Menlo", monospace;
+`
+// PrimaryButton inherits Button
+const PrimaryButton = styled(Button)`
+    // CSS / SCSS goes in here
+    background-color: red;
+    border: none;
+    color: white;
+`
+
+```
+
+### Global Styles
+
+### Adding more button states with nesting
+
+![Button States](./markdown/images/button-states.png)
+
+Next we will be implementing our various Button states. The correct properties will usually be provided to you through a brand guide or a design system by a designer. If you're a unicorn and designed the button states yourself, you can retrieve the colors, padding, and font-sizes yourself from Figma or any conventional design tool.
+
+```javascript
+// Buttons.js
+...
+
+const primaryColor = '#FF5757';
+const hoverColor = '#FF4646';
+const activeColor = '#FF0000';
+
+const textOnPrimary = '#000000';
+const textOnPrimaryInverted = '#ffffff';
+
+const disabled = '#B1B1B1';
+const disabledText = '#3E3D3D';
+
+const PrimaryButton = styled(Button)`
+    // CSS / SCSS goes in here
+    background-color: ${primaryColor};
+    border: none;
+    color: ${textOnPrimary};
+
+    &:hover {
+        background-color: ${hoverColor};
+        color: ${textOnPrimaryInverted};
+    }
+
+    &:focus {
+        background-color: ${activeColor};
+        color: ${textOnPrimaryInverted};
+        outline: 2px solid ${activeColor};
+        outline-offset: 1px;
+    }
+
+    &:active {
+        background-color: ${activeColor};
+        color: ${textOnPrimaryInverted};
+    }
+
+    &:disabled {
+        background-color: ${disabled};
+        color: ${disabledText};
+        cursor: not-allowed;
+    }
+`
+
+```

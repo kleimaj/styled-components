@@ -1,9 +1,11 @@
 import React from 'react';
+import PrimaryButton from './components/Buttons';
 
 function App() {
   return (
-    <div className="App">
-     
+    <div>
+      <h1>My Styled Components</h1>
+     <PrimaryButton>Click Me</PrimaryButton>
     </div>
   );
 }
