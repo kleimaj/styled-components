@@ -378,7 +378,7 @@ const ModalWrapper = styled.div`
     align-items: center;
     position: relative;
     border-radius: 2px;
-    font-family: 'Melo', monospace;
+    font-family: 'Menlo', monospace;
 `
 
 ```
