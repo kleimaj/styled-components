@@ -13,11 +13,15 @@ function App() {
       justifyContent: 'space-around',
       flexDirection: 'column'
     }}>
-      <h1>My Styled Components</h1>
      <PrimaryButton
         onClick={() => setShowModal(!showModal)} 
-     >Click Me</PrimaryButton>
-     <SignUpModal showModal={showModal} setShowModal={setShowModal} />
+     >
+       Click Me
+       </PrimaryButton>
+     <SignUpModal 
+        showModal={showModal} 
+        setShowModal={setShowModal} 
+     />
     </div>
   );
 }
