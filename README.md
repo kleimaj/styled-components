@@ -641,3 +641,11 @@ export const SignUpModal = (props) => {
 }
 
 ```
+
+### In conclusion
+
+Styled-Components removes the need for additional css files and style leaking. It keeps all of your components isolated and style independent and makes updating a particular component much easier.
+
+#### Additional Resources
+
+If you're interested in other CSS in JS libraries, check out [Emotion](https://emotion.sh/docs/introduction) which is very similar to styled-components. Another library for writing styles in JS is [Polished](https://polished.js.org/) and allows for a variety of mixins to dry up your code.
