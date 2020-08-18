@@ -341,3 +341,8 @@ In `App.js`, we are then able to utilize modifiers like so:
     <PrimaryButton modifiers={["large", "warning"]}>A Large Warning Button</PrimaryButton>
 
 ```
+
+### Building a Modal
+
+
+![Modal](./markdown/images/modal.png)
