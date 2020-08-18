@@ -4,9 +4,16 @@ import { SignUpModal } from './components/Modals';
 
 function App() {
   return (
-    <div>
+    <div style={{
+      width: '100vw',
+      height: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      flexDirection: 'column'
+    }}>
       <h1>My Styled Components</h1>
-     <PrimaryButton modifiers={["large","warning"]}>Click Me</PrimaryButton>
+     <PrimaryButton>Click Me</PrimaryButton>
      <SignUpModal />
     </div>
   );

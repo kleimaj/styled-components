@@ -20,6 +20,7 @@ const ModalWrapper = styled.div`
 
 const SignUpHeader = styled.h3`
     font-size: 2rem;
+    margin-bottom: 0;
 `
 
 const SignUpText = styled.p`
