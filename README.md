@@ -378,7 +378,7 @@ const ModalWrapper = styled.div`
     align-items: center;
     position: relative;
     border-radius: 2px;
-    font-family: 'Menlo', monospace;
+    font-family: 'Melo', monospace;
 `
 
 ```
@@ -639,6 +639,20 @@ export const SignUpModal = (props) => {
         </animated.div>
     )
 }
+
+```
+
+<strong>Alternatively, you can restyle the `ModalWrapper` as an animated div</strong>
+
+```javascript
+// Modals.js
+
+const ModalWrapper = styled(animated.div)`
+...
+`
+// apply animation like so
+...
+<ModalWrapper style={animation}>
 
 ```
 
