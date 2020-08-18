@@ -364,11 +364,11 @@ First, create your parent component that will house all other components of the 
 // Modals.js
 
 import React from 'react';
-import styled from 'styled';
+import styled from 'styled-components';
 
 const ModalWrapper = styled.div`
     width: 800px;
-    height: 500px;
+    height: 550px;
     box-shadow: 0 5px 16px rgba(0,0,0, 0.2);
     background-color: #ffffff;
     color: black;
@@ -378,6 +378,7 @@ const ModalWrapper = styled.div`
     align-items: center;
     position: relative;
     border-radius: 2px;
+    font-family: 'Melo', monospace;
 `
 
 ```
@@ -406,6 +407,9 @@ const SignUpText = styled.p`
 ```javascript
 // Modal.js
 
+// import the PrimaryButton
+import { PrimaryButton } from './Buttons';
+
 export const SignUpModal = () => {
     return (
         <ModalWrapper>
@@ -418,4 +422,96 @@ export const SignUpModal = () => {
 
 ```
 
-#### 5. Make a directory called `assets`, to hold our illustrations and icons. 
+#### 5. Make a directory called `assets`, to hold our illustrations and icons.
+
+Your assets directory will look something like so:
+
+![asset structure](./markdown/images/assets.png)
+
+* `mkdir` a `icons` and `illustrations`. And `touch index.js` in your assets directory.
+
+* Drag the `signup.svg` from undraw.io into your illustrations folder. We will then export this in our `index.js` and use it as the `src` of an `img`
+
+```javascript
+// assets/index.js
+
+import SignUp from './illustrations/signup.svg';
+
+export const Illustrations = {
+    SignUp
+}
+
+```
+
+* `touch icons/close-icon.js` to hold our fontawesome icon. We will export this as a styled component.
+
+```javascript
+// assets/icons/close-icon.js
+
+import React from 'react';
+import styled from 'styled-components';
+
+const CloseIconWrapper = styled.svg`
+    width: 100%;
+    height: 100%;
+`
+
+export const CloseIcon=() => (
+    <CloseIconWrapper aria-hidden="true">
+        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="times" className="svg-inline--fa fa-times fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M207.6 256l107.72-107.72c6.23-6.23 6.23-16.34 0-22.58l-25.03-25.03c-6.23-6.23-16.34-6.23-22.58 0L160 208.4 52.28 100.68c-6.23-6.23-16.34-6.23-22.58 0L4.68 125.7c-6.23 6.23-6.23 16.34 0 22.58L112.4 256 4.68 363.72c-6.23 6.23-6.23 16.34 0 22.58l25.03 25.03c6.23 6.23 16.34 6.23 22.58 0L160 303.6l107.72 107.72c6.23 6.23 16.34 6.23 22.58 0l25.03-25.03c6.23-6.23 6.23-16.34 0-22.58L207.6 256z"></path></svg>
+    </CloseIconWrapper>
+)
+
+```
+
+* export the `CloseIcon` component from our `index.js`
+
+```javascript
+// assets/index.js
+
+export * from './icons/close-icon';
+
+```
+
+#### 6. Import our assets into `Modals.js` and render them
+
+```javascript
+// Modals.js
+
+import { Illustrations, CloseIcon } from '../assets';
+
+
+// Button to wrap our CloseIcon component
+const CloseModalButton = styled.button`
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+`
+
+export const SignUpModal = () => {
+    return (
+        <ModalWrapper>
+            <img 
+                src={Illustrations.SignUp} 
+                alt="Sign up for an account" 
+                aria-hidden="true" 
+            />
+            <SignUpHeader>Sign Up!</SignUpHeader>
+            <SignUpText>Sign up today to get access to cool things!</SignUpText>
+            <PrimaryButton>Submit</PrimaryButton>
+            <CloseModalButton
+                aria-label="Close modal"
+            >
+                <CloseIcon/>
+            </CloseModalButton>
+        </ModalWrapper>
+    )
+}
+
+```

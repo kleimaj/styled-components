@@ -1,11 +1,13 @@
 import React from 'react';
-import {PrimaryButton} from './components/Buttons';
+import { PrimaryButton } from './components/Buttons';
+import { SignUpModal } from './components/Modals';
 
 function App() {
   return (
     <div>
       <h1>My Styled Components</h1>
      <PrimaryButton modifiers={["large","warning"]}>Click Me</PrimaryButton>
+     <SignUpModal />
     </div>
   );
 }
