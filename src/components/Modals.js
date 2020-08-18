@@ -4,7 +4,7 @@ import { Illustrations, CloseIcon } from '../assets';
 import { PrimaryButton } from './Buttons';
 import { useSpring, animated } from 'react-spring';
 
-const ModalWrapper = styled.div`
+const ModalWrapper = styled(animated.div)`
     width: 800px;
     height: 550px;
     box-shadow: 0 5px 16px rgba(0,0,0, 0.2);
@@ -49,8 +49,8 @@ export const SignUpModal = (props) => {
         transform: props.showModal ? `translateY(0)` : `translateY(-200%)`
     });
     return (
-        <animated.div style={animation}>
-            <ModalWrapper>
+        // <animated.div style={animation}>
+            <ModalWrapper style={animation}>
                 <img 
                     src={Illustrations.SignUp} 
                     alt="Sign up for an account" 
@@ -66,6 +66,5 @@ export const SignUpModal = (props) => {
                     <CloseIcon/>
                 </CloseModalButton>
             </ModalWrapper>
-        </animated.div>
     )
 }

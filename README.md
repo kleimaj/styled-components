@@ -642,6 +642,20 @@ export const SignUpModal = (props) => {
 
 ```
 
+<strong>Alternatively, you can restyle the `ModalWrapper` as an animated div</strong>
+
+```javascript
+// Modals.js
+
+const ModalWrapper = styled(animated.div)`
+...
+`
+// apply animation like so
+...
+<ModalWrapper style={animation}>
+
+```
+
 ### In conclusion
 
 Styled-Components removes the need for additional css files and style leaking. It keeps all of your components isolated and style independent and makes updating a particular component much easier.
