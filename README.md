@@ -342,6 +342,65 @@ In `App.js`, we are then able to utilize modifiers like so:
 
 ```
 
+### Global Styles with Polished
+
+You can also define Global styles with styled components. We will also be installing the polished dependency to utilize some additional functionality for CSS in JS type of projects
+
+* `npm install polished`
+
+* `import { createGlobalStyle } from "styled-components'`
+
+* define and export your GlobalStyle with `createGlobalStyle`
+
+* import GlobalStyle to `index.js`, and place it right underneath your `App` component.
+
+```javascript
+// utils / Global.js
+import { createGlobalStyle } from "styled-components";
+import { normalize } from "polished";
+
+// CSS RESET
+// Base Font Size: 16px
+export const GlobalStyle = createGlobalStyle`
+    // Cross Browser Compatibility
+    ${normalize()}
+    html {
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Menlo', monospace;
+    }
+
+    main {
+        width: 90%;
+        margin: 0 auto;
+    }
+`
+
+```
+
+And import GlobalStyle into `index.js`
+
+```javascript
+// index.js
+...
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+```
+
+
 ### Building a Modal with Composite Styled Components
 
 
@@ -378,7 +437,7 @@ const ModalWrapper = styled.div`
     align-items: center;
     position: relative;
     border-radius: 2px;
-    font-family: 'Melo', monospace;
+    font-family: 'Menlo', monospace;
 `
 
 ```
